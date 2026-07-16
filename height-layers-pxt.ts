@@ -35,6 +35,8 @@ namespace height {
     //% extra.defl=1
     export function Jump(sprite: Sprite, height?: number, extra?: number) {
         jumping = true
+        
+        sprite.setFlag(SpriteFlag.Ghost, true)
         fallingIndex = height || 23
         for (let index = 0; index <= height - 1; index++) {
             az += 1
@@ -54,6 +56,7 @@ namespace height {
             pause(fallingIndex)
         }
         jumping = false
+        sprite.setFlag(SpriteFlag.Ghost, true)
     }
     /**
      * Check for layer collisions on the current frame
