@@ -28,7 +28,7 @@ namespace height {
      * @param height to make sprite jump 
      * @param extra height sprite gains at the peak of the jump
      */
-    //% block="make $sprite jump ||$height pixels with |$extra float pixels"
+    //% block="make $sprite jump from $hitbox ||$height pixels with |$extra float pixels"
     //% expandableArgumentMode="toggle"
     //% sprite.defl="mySprite"
     //% sprite.shadow=variables_get
