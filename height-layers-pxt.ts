@@ -24,6 +24,7 @@ namespace height {
     /**
      * Make a sprite jump 
      * @param sprite to make jump 
+     * @param the player hitbox
      * @param height to make sprite jump 
      * @param extra height sprite gains at the peak of the jump
      */
@@ -33,10 +34,10 @@ namespace height {
     //% sprite.shadow=variables_get
     //% height.defl=23
     //% extra.defl=1
-    export function Jump(sprite: Sprite, height?: number, extra?: number) {
+    export function Jump(sprite: Sprite, hitbox: Sprite, height?: number, extra?: number) {
         jumping = true
         
-        sprite.setFlag(SpriteFlag.Ghost, true)
+        hitbox.setFlag(SpriteFlag.Ghost, true)
         fallingIndex = height || 23
         for (let index = 0; index <= height - 1; index++) {
             az += 1
@@ -56,7 +57,7 @@ namespace height {
             pause(fallingIndex)
         }
         jumping = false
-        sprite.setFlag(SpriteFlag.Ghost, true)
+        hitbox.setFlag(SpriteFlag.Ghost, false)
     }
     /**
      * Check for layer collisions on the current frame
@@ -150,6 +151,7 @@ namespace height {
     //% hitbox.defl=myHitbox
     //% hitbox.shadow=variables_get
     export function listenForJump(hitbox: Sprite, player: Sprite) {
+        player.setFlag(SpriteFlag.Ghost, true)
         player.setPosition(hitbox.x, hitbox.y - az)
     }
 
